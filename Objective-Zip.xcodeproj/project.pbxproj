@@ -18,9 +18,9 @@
 		8C14E8191773A09F00B84597 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C14E8181773A09F00B84597 /* Security.framework */; };
 		8C1D598D1771057D006D69C3 /* GETTING_STARTED.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C1D598B1771057D006D69C3 /* GETTING_STARTED.md */; };
 		8C1D598E1771057D006D69C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C1D598C1771057D006D69C3 /* README.md */; };
-		8C6D352D10E56A9000B63EFA /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352510E56A9000B63EFA /* ioapi.c */; };
-		8C6D352F10E56A9000B63EFA /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352910E56A9000B63EFA /* unzip.c */; };
-		8C6D353010E56A9000B63EFA /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352B10E56A9000B63EFA /* zip.c */; };
+		8C6D352D10E56A9000B63EFA /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352510E56A9000B63EFA /* ioapi.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8C6D352F10E56A9000B63EFA /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352910E56A9000B63EFA /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8C6D353010E56A9000B63EFA /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D352B10E56A9000B63EFA /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8C6D354010E56BD300B63EFA /* FDZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D353F10E56BD300B63EFA /* FDZipFile.m */; };
 		8C6D356B10E56F4D00B63EFA /* FDZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D356A10E56F4D00B63EFA /* FDZipException.m */; };
 		8C6D357610E5797600B63EFA /* FDZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D357510E5797600B63EFA /* FDZipWriteStream.m */; };
@@ -28,21 +28,21 @@
 		8C8F2D3A10EBC94B00F75833 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C8F2D3910EBC94B00F75833 /* Default.png */; };
 		8C8F2D9310EBCE0300F75833 /* ObjectiveZipIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C8F2D9210EBCE0300F75833 /* ObjectiveZipIcon.png */; };
 		8CBE431810E95FA300AC9ED3 /* FDZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE431710E95FA300AC9ED3 /* FDZipReadStream.m */; };
-		8CD8B40317766067005212EC /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3E917766067005212EC /* adler32.c */; };
-		8CD8B40417766067005212EC /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EA17766067005212EC /* compress.c */; };
-		8CD8B40517766067005212EC /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EB17766067005212EC /* crc32.c */; };
-		8CD8B40617766067005212EC /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3ED17766067005212EC /* deflate.c */; };
-		8CD8B40717766067005212EC /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EF17766067005212EC /* gzclose.c */; };
-		8CD8B40817766067005212EC /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F117766067005212EC /* gzlib.c */; };
-		8CD8B40917766067005212EC /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F217766067005212EC /* gzread.c */; };
-		8CD8B40A17766067005212EC /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F317766067005212EC /* gzwrite.c */; };
-		8CD8B40B17766067005212EC /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F417766067005212EC /* infback.c */; };
-		8CD8B40C17766067005212EC /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F517766067005212EC /* inffast.c */; };
-		8CD8B40D17766067005212EC /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F817766067005212EC /* inflate.c */; };
-		8CD8B40E17766067005212EC /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FA17766067005212EC /* inftrees.c */; };
-		8CD8B40F17766067005212EC /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FC17766067005212EC /* trees.c */; };
-		8CD8B41017766067005212EC /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FE17766067005212EC /* uncompr.c */; };
-		8CD8B41117766067005212EC /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B40117766067005212EC /* zutil.c */; };
+		8CD8B40317766067005212EC /* adler32.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3E917766067005212EC /* adler32.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40417766067005212EC /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EA17766067005212EC /* compress.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40517766067005212EC /* crc32.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EB17766067005212EC /* crc32.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40617766067005212EC /* deflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3ED17766067005212EC /* deflate.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40717766067005212EC /* gzclose.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3EF17766067005212EC /* gzclose.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40817766067005212EC /* gzlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F117766067005212EC /* gzlib.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40917766067005212EC /* gzread.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F217766067005212EC /* gzread.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40A17766067005212EC /* gzwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F317766067005212EC /* gzwrite.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40B17766067005212EC /* infback.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F417766067005212EC /* infback.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40C17766067005212EC /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F517766067005212EC /* inffast.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40D17766067005212EC /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3F817766067005212EC /* inflate.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40E17766067005212EC /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FA17766067005212EC /* inftrees.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B40F17766067005212EC /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FC17766067005212EC /* trees.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B41017766067005212EC /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B3FE17766067005212EC /* uncompr.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CD8B41117766067005212EC /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 8CD8B40117766067005212EC /* zutil.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CE370031777427E0082BEE9 /* mac_test_file.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8CE370011777427E0082BEE9 /* mac_test_file.zip */; };
 		8CE370041777427E0082BEE9 /* win_test_file.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8CE370021777427E0082BEE9 /* win_test_file.zip */; };
 /* End PBXBuildFile section */
@@ -80,7 +80,6 @@
 		8C83F49410E7CBCB002FB3CB /* FDFileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFileInZipInfo.m; path = "Objective-Zip/FDFileInZipInfo.m"; sourceTree = "<group>"; };
 		8C8F2D3910EBC94B00F75833 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8C8F2D9210EBCE0300F75833 /* ObjectiveZipIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ObjectiveZipIcon.png; sourceTree = "<group>"; };
-		8C9893AF16E5511500E1190A /* ARCHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
 		8CBE431610E95FA300AC9ED3 /* FDZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDZipReadStream.h; path = "Objective-Zip/FDZipReadStream.h"; sourceTree = "<group>"; };
 		8CBE431710E95FA300AC9ED3 /* FDZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDZipReadStream.m; path = "Objective-Zip/FDZipReadStream.m"; sourceTree = "<group>"; };
 		8CD8B3E917766067005212EC /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = adler32.c; path = ZLib/adler32.c; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 				8C6D353B10E56BA400B63EFA /* Objective-Zip */,
 				8C6D350110E56A4B00B63EFA /* MiniZip */,
 				8CD8B3E817766056005212EC /* ZLib */,
-				8C9893AE16E550E600E1190A /* ARC Helper */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -229,15 +227,6 @@
 				8CBE431710E95FA300AC9ED3 /* FDZipReadStream.m */,
 			);
 			name = "Objective-Zip";
-			sourceTree = "<group>";
-		};
-		8C9893AE16E550E600E1190A /* ARC Helper */ = {
-			isa = PBXGroup;
-			children = (
-				8C9893AF16E5511500E1190A /* ARCHelper.h */,
-			);
-			name = "ARC Helper";
-			path = ARCHelper;
 			sourceTree = "<group>";
 		};
 		8CD8B3E817766056005212EC /* ZLib */ = {
@@ -379,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gianluca Bertani (42HXKD6D45)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -397,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gianluca Bertani (42HXKD6D45)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

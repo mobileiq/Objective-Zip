@@ -33,7 +33,6 @@
 
 #import <Foundation/Foundation.h>
 #import "FDZipFile.h"
-#import "ARCHelper.h"
 
 
 @interface FDFileInZipInfo : NSObject {
