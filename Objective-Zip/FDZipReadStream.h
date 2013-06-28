@@ -1,8 +1,8 @@
 //
-//  ZipWriteStream.h
+//  ZipReadStream.h
 //  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 25/12/09.
+//  Created by Gianluca Bertani on 28/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -34,19 +34,19 @@
 #import <Foundation/Foundation.h>
 #import "ARCHelper.h"
 
-#include "zip.h"
+#include "unzip.h"
 
 
-@interface ZipWriteStream : NSObject {
+@interface FDZipReadStream : NSObject {
 	NSString *_fileNameInZip;
-
+	
 @private
-	zipFile _zipFile;
+	unzFile _unzFile;
 }
 
-- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
+- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip;
 
-- (void) writeData:(NSData *)data;
-- (void) finishedWriting;
+- (NSUInteger) readDataWithBuffer:(NSMutableData *)buffer;
+- (void) finishedReading;
 
 @end

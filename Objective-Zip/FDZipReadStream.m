@@ -1,8 +1,8 @@
 //
-//  ZipFile.h
-//  Objective-Zip v.0.8.3
+//  ZipReadStream.m
+//  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 25/12/09.
+//  Created by Gianluca Bertani on 28/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -31,58 +31,41 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
-#import "ARCHelper.h"
+#import "FDZipReadStream.h"
+#import "FDZipException.h"
 
-#include "zip.h"
 #include "unzip.h"
 
 
-typedef enum {
-	ZipFileModeUnzip,
-	ZipFileModeCreate,
-	ZipFileModeAppend
-} ZipFileMode;
+@implementation FDZipReadStream
 
-typedef enum {
-	ZipCompressionLevelDefault= -1,
-	ZipCompressionLevelNone= 0,
-	ZipCompressionLevelFastest= 1,
-	ZipCompressionLevelBest= 9
-} ZipCompressionLevel;	
 
-@class ZipReadStream;
-@class ZipWriteStream;
-@class FileInZipInfo;
-
-@interface ZipFile : NSObject {
-	NSString *_fileName;
-	ZipFileMode _mode;
-
-@private
-	zipFile _zipFile;
-	unzFile _unzFile;
+- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip {
+	if (self= [super init]) {
+		_unzFile= unzFile;
+		_fileNameInZip= fileNameInZip;
+	}
+	
+	return self;
 }
 
-- (id) initWithFileName:(NSString *)fileName mode:(ZipFileMode)mode;
+- (NSUInteger) readDataWithBuffer:(NSMutableData *)buffer {
+	int err= unzReadCurrentFile(_unzFile, [buffer mutableBytes], [buffer length]);
+	if (err < 0) {
+		NSString *reason= [NSString stringWithFormat:@"Error reading '%@' in the zipfile", _fileNameInZip];
+		@throw [[[FDZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+	
+	return err;
+}
 
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip compressionLevel:(ZipCompressionLevel)compressionLevel;
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel;
-- (ZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(ZipCompressionLevel)compressionLevel password:(NSString *)password crc32:(NSUInteger)crc32;
+- (void) finishedReading {
+	int err= unzCloseCurrentFile(_unzFile);
+	if (err != UNZ_OK) {
+		NSString *reason= [NSString stringWithFormat:@"Error closing '%@' in the zipfile", _fileNameInZip];
+		@throw [[[FDZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+}
 
-- (NSString*) fileName;
-- (NSUInteger) numFilesInZip;
-- (NSArray *) listFileInZipInfos;
-
-- (void) goToFirstFileInZip;
-- (BOOL) goToNextFileInZip;
-- (BOOL) locateFileInZip:(NSString *)fileNameInZip;
-
-- (FileInZipInfo *) getCurrentFileInZipInfo;
-
-- (ZipReadStream *) readCurrentFileInZip;
-- (ZipReadStream *) readCurrentFileInZipWithPassword:(NSString *)password;
-
-- (void) close;
 
 @end

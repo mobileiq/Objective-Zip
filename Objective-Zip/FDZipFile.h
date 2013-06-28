@@ -1,8 +1,8 @@
 //
-//  FileInZipInfo.m
-//  Objective-Zip v. 0.8.3
+//  ZipFile.h
+//  Objective-Zip v.0.8.3
 //
-//  Created by Gianluca Bertani on 27/12/09.
+//  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -31,38 +31,58 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "FileInZipInfo.h"
+#import <Foundation/Foundation.h>
+#import "ARCHelper.h"
+
+#include "zip.h"
+#include "unzip.h"
 
 
-@implementation FileInZipInfo
+typedef enum {
+	FDZipFileModeUnzip,
+	FDZipFileModeCreate,
+	FDZipFileModeAppend
+} FDZipFileMode;
 
-- (id) initWithName:(NSString *)name length:(NSUInteger)length level:(ZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32 {
-	if (self= [super init]) {
-		_name= [name ah_retain];
-		_length= length;
-		_level= level;
-		_crypted= crypted;
-		_size= size;
-		_date= [date ah_retain];
-		_crc32= crc32;
-	}
-	
-	return self;
+typedef enum {
+	FDZipCompressionLevelDefault= -1,
+	FDZipCompressionLevelNone= 0,
+	FDZipCompressionLevelFastest= 1,
+	FDZipCompressionLevelBest= 9
+} FDZipCompressionLevel;
+
+@class FDZipReadStream;
+@class FDZipWriteStream;
+@class FDFileInZipInfo;
+
+@interface FDZipFile : NSObject {
+	NSString *_fileName;
+	FDZipFileMode _mode;
+
+@private
+	zipFile _zipFile;
+	unzFile _unzFile;
 }
 
-- (void) dealloc {
-	[_date release];
-	[_name release];
-	
-	[super ah_dealloc];
-}
+- (id) initWithFileName:(NSString *)fileName mode:(FDZipFileMode)mode;
 
-@synthesize name= _name;
-@synthesize length= _length;
-@synthesize level= _level;
-@synthesize crypted= _crypted;
-@synthesize size= _size;
-@synthesize date= _date;
-@synthesize crc32= _crc32;
+- (FDZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip compressionLevel:(FDZipCompressionLevel)compressionLevel;
+- (FDZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(FDZipCompressionLevel)compressionLevel;
+- (FDZipWriteStream *) writeFileInZipWithName:(NSString *)fileNameInZip fileDate:(NSDate *)fileDate compressionLevel:(FDZipCompressionLevel)compressionLevel password:(NSString *)password crc32:(NSUInteger)crc32;
+
+- (NSString*) fileName;
+- (NSUInteger) numFilesInZip;
+- (NSArray *) listFileInZipInfos;
+
+- (void) goToFirstFileInZip;
+- (BOOL) goToNextFileInZip;
+- (BOOL) locateFileInZip:(NSString *)fileNameInZip;
+
+- (FDFileInZipInfo *) getCurrentFileInZipInfo;
+
+- (FDZipReadStream *) readCurrentFileInZip;
+- (FDZipReadStream *) readCurrentFileInZipWithPassword:(NSString *)password;
+
+- (void) close;
 
 @end

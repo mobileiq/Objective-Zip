@@ -1,5 +1,5 @@
 //
-//  ZipException.h
+//  ZipWriteStream.m
 //  Objective-Zip v. 0.8.3
 //
 //  Created by Gianluca Bertani on 25/12/09.
@@ -31,19 +31,39 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import <Foundation/Foundation.h>
-#import "ARCHelper.h"
+#import "FDZipWriteStream.h"
+#import "FDZipException.h"
+
+#include "zip.h"
 
 
-@interface ZipException : NSException {
+@implementation FDZipWriteStream
+
+
+- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip {
+	if (self= [super init]) {
+		_zipFile= zipFile;
+		_fileNameInZip= fileNameInZip;
+	}
 	
-@private	
-	NSInteger _error;
+	return self;
 }
 
-- (id) initWithReason:(NSString *)reason;
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason;
+- (void) writeData:(NSData *)data {
+	int err= zipWriteInFileInZip(_zipFile, [data bytes], [data length]);
+	if (err < 0) {
+		NSString *reason= [NSString stringWithFormat:@"Error writing '%@' in the zipfile", _fileNameInZip];
+		@throw [[[FDZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+}
 
-@property (nonatomic, readonly) NSInteger error;
+- (void) finishedWriting {
+	int err= zipCloseFileInZip(_zipFile);
+	if (err != ZIP_OK) {
+		NSString *reason= [NSString stringWithFormat:@"Error closing '%@' in the zipfile", _fileNameInZip];
+		@throw [[[FDZipException alloc] initWithError:err reason:reason] autorelease];
+	}
+}
+
 
 @end

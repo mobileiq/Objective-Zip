@@ -1,8 +1,8 @@
 //
-//  ZipReadStream.h
+//  ZipException.h
 //  Objective-Zip v. 0.8.3
 //
-//  Created by Gianluca Bertani on 28/12/09.
+//  Created by Gianluca Bertani on 25/12/09.
 //  Copyright 2009-10 Flying Dolphin Studio. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without 
@@ -34,19 +34,16 @@
 #import <Foundation/Foundation.h>
 #import "ARCHelper.h"
 
-#include "unzip.h"
 
-
-@interface ZipReadStream : NSObject {
-	NSString *_fileNameInZip;
+@interface FDZipException : NSException {
 	
-@private
-	unzFile _unzFile;
+@private	
+	NSInteger _error;
 }
 
-- (id) initWithUnzFileStruct:(unzFile)unzFile fileNameInZip:(NSString *)fileNameInZip;
+- (id) initWithReason:(NSString *)reason;
+- (id) initWithError:(NSInteger)error reason:(NSString *)reason;
 
-- (NSUInteger) readDataWithBuffer:(NSMutableData *)buffer;
-- (void) finishedReading;
+@property (nonatomic, readonly) NSInteger error;
 
 @end

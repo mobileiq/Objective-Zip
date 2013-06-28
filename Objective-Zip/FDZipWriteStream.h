@@ -1,5 +1,5 @@
 //
-//  ZipException.m
+//  ZipWriteStream.h
 //  Objective-Zip v. 0.8.3
 //
 //  Created by Gianluca Bertani on 25/12/09.
@@ -31,27 +31,22 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ZipException.h"
+#import <Foundation/Foundation.h>
+#import "ARCHelper.h"
+
+#include "zip.h"
 
 
-@implementation ZipException
+@interface FDZipWriteStream : NSObject {
+	NSString *_fileNameInZip;
 
-- (id) initWithReason:(NSString *)reason {
-	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
-		_error= 0;
-	}
-	
-	return self;
+@private
+	zipFile _zipFile;
 }
 
-- (id) initWithError:(NSInteger)error reason:(NSString *)reason {
-	if (self= [super initWithName:@"ZipException" reason:reason userInfo:nil]) {
-		_error= error;
-	}
-	
-	return self;
-}
+- (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
 
-@synthesize error= _error;
+- (void) writeData:(NSData *)data;
+- (void) finishedWriting;
 
 @end
