@@ -274,7 +274,7 @@
 		return NO;
 
 	if (err != UNZ_OK) {
-		NSString *reason= [NSString stringWithFormat:@"Error localting file in zip in '%@'", _fileName];
+		NSString *reason= [NSString stringWithFormat:@"Error locating file in zip in '%@'", _fileName];
 		@throw [[FDZipException alloc] initWithError:err reason:reason];
 	}
 	
