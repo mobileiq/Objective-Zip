@@ -36,12 +36,7 @@
 #include "zip.h"
 
 
-@interface FDZipWriteStream : NSObject {
-	NSString *_fileNameInZip;
-
-@private
-	zipFile _zipFile;
-}
+@interface FDZipWriteStream : NSObject
 
 - (id) initWithZipFileStruct:(zipFile)zipFile fileNameInZip:(NSString *)fileNameInZip;
 

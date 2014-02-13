@@ -37,8 +37,21 @@
 #import "FDZipWriteStream.h"
 #import "FDFileInZipInfo.h"
 
+#include "zip.h"
+#include "unzip.h"
+
 #define FILE_IN_ZIP_MAX_NAME_LENGTH (256)
 
+@interface FDZipFile () {
+    NSString *_fileName;
+	FDZipFileMode _mode;
+@private
+    zipFile _zipFile;
+    unzFile _unzFile;
+}
+
+
+@end
 
 @implementation FDZipFile
 

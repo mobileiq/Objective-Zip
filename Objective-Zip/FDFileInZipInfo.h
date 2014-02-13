@@ -35,17 +35,7 @@
 #import "FDZipFile.h"
 
 
-@interface FDFileInZipInfo : NSObject {
-	
-@private
-	NSUInteger _length;
-	FDZipCompressionLevel _level;
-	BOOL _crypted;
-	NSUInteger _size;
-	NSDate *_date;
-	NSUInteger _crc32;
-	NSString *_name;
-}
+@interface FDFileInZipInfo : NSObject
 
 - (id) initWithName:(NSString *)name length:(NSUInteger)length level:(FDZipCompressionLevel)level crypted:(BOOL)crypted size:(NSUInteger)size date:(NSDate *)date crc32:(NSUInteger)crc32;
 

@@ -33,6 +33,19 @@
 
 #import "FDFileInZipInfo.h"
 
+@interface FDFileInZipInfo (){
+	
+@private
+	NSUInteger _length;
+	FDZipCompressionLevel _level;
+	BOOL _crypted;
+	NSUInteger _size;
+	NSDate *_date;
+	NSUInteger _crc32;
+	NSString *_name;
+}
+
+@end
 
 @implementation FDFileInZipInfo
 

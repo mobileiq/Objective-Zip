@@ -33,9 +33,6 @@
 
 #import <Foundation/Foundation.h>
 
-#include "zip.h"
-#include "unzip.h"
-
 
 typedef enum {
 	FDZipFileModeUnzip,
@@ -54,14 +51,9 @@ typedef enum {
 @class FDZipWriteStream;
 @class FDFileInZipInfo;
 
-@interface FDZipFile : NSObject {
-	NSString *_fileName;
-	FDZipFileMode _mode;
+@interface FDZipFile : NSObject
 
-@private
-	zipFile _zipFile;
-	unzFile _unzFile;
-}
+
 
 - (id) initWithFileName:(NSString *)fileName mode:(FDZipFileMode)mode;
 

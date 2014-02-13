@@ -36,6 +36,14 @@
 
 #include "zip.h"
 
+@interface FDZipWriteStream () {
+	NSString *_fileNameInZip;
+    
+@private
+	zipFile _zipFile;
+}
+
+@end
 
 @implementation FDZipWriteStream
 
